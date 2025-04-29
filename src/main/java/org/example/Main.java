@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         int[] nums = {3,1,5,2,1,4};
 
-        selectionSort(nums); //{1 , 1 , 2 , 3 , 4 , 5}
+        insertionSort(nums); //{1 , 1 , 2 , 3 , 4 , 5}
 
         System.out.println(Arrays.toString(nums));
     }
@@ -59,7 +59,7 @@ public class Main {
     public static void selectionSort(int[] nums) {
         for (int i = 0; i < nums.length - 1; i++) {
             int smallestIdx = i;
-            for (int j = 0; j < nums.length; j++) {
+            for (int j = i; j < nums.length; j++) {
                 if (nums[j] < nums[smallestIdx]) {
                     smallestIdx = j;
                 }
@@ -69,6 +69,33 @@ public class Main {
             nums[i] = nums[smallestIdx];
             nums[smallestIdx] = temp;
         }
+    }
 
+    /*
+    3 15214
+    1 35214
+    13 5214
+    135 514
+    133 514
+    123 514
+    1235 14
+    1235 54
+    1233 54
+    1223 54
+    1123 54
+    11235 5
+    11234 5
+    112345
+     */
+    public static void insertionSort(int[] nums) {
+        for (int i = 1; i < nums.length ; i++) {
+            int key = nums[i];
+            int j = i - 1;
+            while (j >= 0 && nums[j] > key) {
+                nums[j + 1] = nums[j];
+                j--;
+            }
+            nums[j + 1] = key;
+        }
     }
 }
