@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         int[] nums = {3,1,5,2,1,4};
 
-        bubbleSort(nums); //{1 , 1 , 2 , 3 , 4 , 5}
+        selectionSort(nums); //{1 , 1 , 2 , 3 , 4 , 5}
 
         System.out.println(Arrays.toString(nums));
     }
@@ -48,5 +48,27 @@ public class Main {
         }
     }
 
+    /*
+    315214
+    135214
+    115234
+    112534
+    112354
+    112345
+     */
+    public static void selectionSort(int[] nums) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            int smallestIdx = i;
+            for (int j = 0; j < nums.length; j++) {
+                if (nums[j] < nums[smallestIdx]) {
+                    smallestIdx = j;
+                }
+            }
+            //swap nums[i] and nums[smallestIdx]
+            int temp = nums[i];
+            nums[i] = nums[smallestIdx];
+            nums[smallestIdx] = temp;
+        }
 
+    }
 }
